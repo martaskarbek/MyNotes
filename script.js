@@ -1,3 +1,4 @@
+
 const add_area = document.querySelector('.input');
 const display_notes = document.querySelector('.notes_show');
 const create_new_note = document.querySelector('.create');
@@ -30,7 +31,7 @@ function createNewNotepad() {
 
 
 function print() {
-    let value = this.add_area.value;
+    let value = add_area.value;
     dataFromStorage.push(value);
     console.log(dataFromStorage);
     localStorage.setItem('note', JSON.stringify({i: value}));
