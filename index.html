@@ -12,6 +12,17 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+<template id="row-template">
+    <div class="content">
+        <div>
+            <form class="form">
+                <label></label>
+                <input class="input" type="text" name="item_2" id="item"/> <br/>
+            </form>
+            <button class="remove_button"></button>
+        </div>
+    </div>
+</template>
 
     <div class="container">
         <header>
@@ -19,10 +30,12 @@
         </header>
         <div class="notes_container">
             <div class="notes_add">
-                <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
-                <button class="submit" type="submit">Add note</button>
+                <section>
+                    <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
+                    <button class="submit" type="submit">Add note</button>
+                </section>
             </div>
-            <p class="notes_show"></p>
+            <div class="notes_show"></div>
         </div>
     </div>
 </body>
