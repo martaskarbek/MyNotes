@@ -1,3 +1,4 @@
+
 const add_area = document.querySelector('.input');
 const display_notes = document.querySelector('.notes_show');
 const create_new_note = document.querySelector('.create');
@@ -9,7 +10,6 @@ function main() {
     create_new_note.addEventListener('click', createNewNotepad);
     submit_button.addEventListener('click', print);
     addToLocalStorage();
-    getNotesFromStorage();
 }
 
 function createNewNotepad() {
@@ -26,8 +26,8 @@ function createNewNotepad() {
 }
 
 function firstAdd() {
-     let value = add_area.value;
-     dataToStorage.push(value);
+    let value = add_area.value;
+    dataToStorage.push(value);
 }
 
 function print() {
@@ -40,25 +40,24 @@ function print() {
     i++;
     const toRemove = document.querySelector('section');
     toRemove.remove();
-    addToLocalStorage()
+    addToLocalStorage();
 }
 
 function addToLocalStorage() {
     localStorage.setItem('note', JSON.stringify(dataToStorage));
+    getNotesFromStorage();
 }
 
 function getNotesFromStorage() {
     let notesFromStorage = localStorage.getItem("note");
-    console.log(notesFromStorage);
     let notes = JSON.parse(notesFromStorage);
     if (notes){
-        for (let j=0; j<notesFromStorage.length; j++) {
+        for (let j=0; j<notes.length; j++) {
             const p = document.createElement("p");
-            p.textContent = j;
+            p.innerHTML = notes[j];
             document.querySelector('.notes_show').appendChild(p);
         };
     }
 }
-
 
 main();
