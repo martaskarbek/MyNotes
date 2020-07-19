@@ -12,24 +12,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-<template id="row-template">
-    <div class="content">
-        <div>
-            <form class="form">
-                <label></label>
-                <input class="input" type="text" name="item_2" id="item"/> <br/>
-            </form>
-            <button class="remove_button"></button>
-        </div>
-    </div>
+<template id="notepad-template">
+            <section>
+                <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
+                <button class="submit" type="submit">Add note</button>
+            </section>
 </template>
 
     <div class="container">
         <header>
             <div class="header"><i class="fas fa-feather-alt"></i>MyNotes</div>
+            <p class="create"><i class="fas fa-feather-alt"></i>... create new note</p>
         </header>
         <div class="notes_container">
-            <div class="notes_add">
+            <div class="notes_add" id="parentNode">
                 <section>
                     <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
                     <button class="submit" type="submit">Add note</button>
