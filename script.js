@@ -16,12 +16,12 @@ function main() {
 }
 
 function createNewNotepad() {
-    const createNotepad = function(button_name){
+    const createNotepad = function(){
         const template = document.querySelector('#notepad-template');
         const clone = document.importNode(template.content, true);
         clone.querySelector('section');
         clone.querySelector('textarea');
-        clone.querySelector('button').textContent = button_name;
+        clone.querySelector('button');
         return clone;
     };
     const noteElement = createNotepad('Add note');
