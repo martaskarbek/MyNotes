@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/ec0fce918b.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -17,10 +18,10 @@
             <div class="header"><i class="fas fa-feather-alt"></i>MyNotes</div>
         </header>
         <div class="notes_container">
-            <form class="notes_add">
-                <textarea class="input" name="nazwa" cols="85" rows="25" placeholder="Type your text here"></textarea>
-                <button type="submit">Add note</button>
-            </form>
+            <div class="notes_add">
+                <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
+                <button class="submit" type="submit">Add note</button>
+            </div>
             <div class="notes_show"></div>
         </div>
     </div>
