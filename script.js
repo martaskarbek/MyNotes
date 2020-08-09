@@ -52,16 +52,11 @@ function getNewNote() {
 }
 
 function showNotes() {
-    const notesShow =  document.querySelector('.notes_show');
     if (allNotes) {
         for (let i = 0; i < allNotes.length; i++) {
-            const p = document.createElement('p');
-            const value = document.createElement('p');
-            p.innerHTML = (allNotes[i].title).toUpperCase() + ' :'
-            value.innerHTML = allNotes[i].content;
-            value.style.marginLeft = '3.5%';
-            notesShow.appendChild(p);
-            notesShow.appendChild(value);
+            const title = allNotes[i].title;
+            const content = allNotes[i].content;
+            createSingleNote(title, content);
         };
     };
 }
@@ -70,7 +65,7 @@ function createSingleNote(title, content) {
     const noteTemplate = document.querySelector('#single-note-template');
     const notesHolder = document.querySelector('.notes_show');
     const singleNote = document.importNode(noteTemplate.content, true);
-    clone.querySelector('.note-title').innerHTML = title;
-    clone.querySelector('.note-content').innerHTML = content;
+    singleNote.querySelector('.note-title').innerHTML = title.toUpperCase();
+    singleNote.querySelector('.note-content').innerHTML = content;
     notesHolder.appendChild(singleNote);
 }

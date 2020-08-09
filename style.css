@@ -106,3 +106,17 @@ button {
 footer {
     margin-bottom: 0.5%;
 }
+
+.note-holder {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dotted #A9A9A9;
+    box-shadow: #A9A9A9;
+
+}
+
+.remove {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5% 0;
+}
