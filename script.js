@@ -7,9 +7,14 @@ let allNotes = [];
 })();
 
 function getDataFromStorage() {
-    let notess = JSON.parse(localStorage.getItem("notes"));
-    for (let i =0; i<notess.length; i++) {
-        allNotes.push(notess[i]);
+    if (localStorage.getItem('notes') == null) {
+        localStorage.setItem('notes', []);
+    }
+    else {
+        let notess = JSON.parse(localStorage.getItem("notes"));
+        for (let i =0; i<notess.length; i++) {
+            allNotes.push(notess[i]);
+        }
     }
 }
 
