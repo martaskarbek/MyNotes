@@ -4,6 +4,7 @@ let allNotes = [];
     getDataFromStorage();
     createNewNotepad();
     showNotes();
+    removeNote();
 })();
 
 function getDataFromStorage() {
@@ -68,4 +69,21 @@ function createSingleNote(title, content) {
     singleNote.querySelector('.note-title').innerHTML = title.toUpperCase();
     singleNote.querySelector('.note-content').innerHTML = content;
     notesHolder.appendChild(singleNote);
+}
+
+function removeNote() {
+    let remove_buttons = document.querySelectorAll('.remove');
+    remove_buttons.forEach(buttonn => buttonn.addEventListener('click', function () {
+        this.parentElement.remove();
+        const title = this.parentElement.children.item(0).children.item(0).textContent.toString();
+        const content = this.parentElement.children.item(0).children.item(1).textContent.toString();
+        for (let i = 0; i < allNotes.length; i++) {
+            const titleName = allNotes[i].title;
+            const contentName = allNotes[i].content;
+            if (titleName.toUpperCase() === title && contentName === content ) {
+                allNotes.splice(i, 1);
+            }
+        }
+        setDataToStorage();
+    }));
 }

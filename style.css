@@ -111,8 +111,6 @@ footer {
     display: flex;
     flex-direction: row;
     border-bottom: 1px dotted #A9A9A9;
-    box-shadow: #A9A9A9;
-
 }
 
 .remove {
