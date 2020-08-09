@@ -1,64 +1,62 @@
-const add_area = document.querySelector('.input');
-const create_new_note = document.querySelector('.create');
-const submit_button = document.querySelector('button');
-let i = 0;
-let dataToStorage = [];
+let allNotes = [];
 
-function main() {
-    create_new_note.addEventListener('click', createNewNotepad);
-    submit_button.addEventListener('click', getInputValue);
-    addToLocalStorage();
+(() => {
+    getDataFromStorage();
+    createNewNotepad();
+    showNotes();
+})();
+
+function getDataFromStorage() {
+    let notess = JSON.parse(localStorage.getItem("notes"));
+    for (let i =0; i<notess.length; i++) {
+        allNotes.push(notess[i]);
+    }
+}
+
+function setDataToStorage() {
+    const parsedNotes = allNotes.length > 0 ? JSON.stringify(allNotes) : [];
+    localStorage.setItem('notes', parsedNotes);
 }
 
 function createNewNotepad() {
-    const createNotepad = function(){
-        const template = document.querySelector('#notepad-template');
-        const clone = document.importNode(template.content, true);
-        clone.querySelector('section');
-        clone.querySelector('textarea').classList.add(String(i));
-        clone.querySelector('button').classList.add(String(i));
-        return clone;
-    };
-    const noteElement = createNotepad('Add note');
-    document.querySelector('#parentNode').appendChild(noteElement);
+    const notepad = document.querySelector('.create');
+    notepad.addEventListener('click', cloneNoteSheet);
 }
 
-function firstAdd() {
-    let value = add_area.value;
-    dataToStorage.push(value);
+function cloneNoteSheet() {
+    const noteTemplate = document.querySelector('#notepad-template');
+    const notepadHolder = document.querySelector('#parentNode');
+    const noteSheet = document.importNode(noteTemplate.content, true);
+    notepadHolder.appendChild(noteSheet);
 }
 
-function getInputValue() {
-    let area = document.querySelector('.input');
-    let tempButton = document.querySelector('button');
-    if (area.classList.contains(String(i)) && tempButton.classList.contains(String(i))) {
-        let value2 = area.value;
-        dataToStorage.push(value2);
-    }
-    i++;
+function getNewNote() {
     const toRemove = document.querySelector('section');
+    const noteTitle = document.querySelector('.note-name');
+    const noteContent = document.querySelector('.input');
+    let note = {
+        title: `${noteTitle.value}`,
+        content: `${noteContent.value}`
+    };
+    allNotes.push(note);
     toRemove.remove();
-    addToLocalStorage();
-}
-
-function addToLocalStorage() {
-    const item = dataToStorage.length > 0 ? JSON.stringify(dataToStorage) : [];
-    localStorage.setItem('note', item);
-    getNotesFromStorage();
-}
-
-function getNotesFromStorage() {
     const notesShow =  document.querySelector('.notes_show');
-    let notesFromStorage = localStorage.getItem("note");
-    let notes = JSON.parse(notesFromStorage);
-    if (notes){
-        notesShow.innerHTML = "";
-        for (let j=0; j<notes.length; j++) {
-            const p = document.createElement("p");
-            p.innerHTML = notes[j];
-            notesShow.appendChild(p);
-        };
-    }
+    notesShow.innerHTML = "";
+    setDataToStorage();
+    showNotes();
 }
 
-main();
+function showNotes() {
+    const notesShow =  document.querySelector('.notes_show');
+    if (allNotes) {
+        for (let i = 0; i < allNotes.length; i++) {
+            const p = document.createElement('p');
+            const value = document.createElement('p');
+            p.innerHTML = (allNotes[i].title).toUpperCase() + ' :'
+            value.innerHTML = allNotes[i].content;
+            value.style.marginLeft = '3.5%';
+            notesShow.appendChild(p);
+            notesShow.appendChild(value);
+        };
+    };
+}

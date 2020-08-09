@@ -14,8 +14,9 @@
 <body>
 <template id="notepad-template">
             <section>
+                <textarea class="note-name" name="name" cols="25" rows="10" placeholder="Type name of your note"></textarea>
                 <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
-                <button class="submit" type="submit" onclick="print()">Add note</button>
+                <button class="submit-note" type="submit" onclick="getNewNote()">Add note</button>
             </section>
 </template>
 
@@ -26,10 +27,6 @@
         </header>
         <div class="notes_container">
             <div class="notes_add" id="parentNode">
-                <section>
-                    <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
-                    <button class="submit" type="submit" onclick="firstAdd()">Add note</button>
-                </section>
             </div>
             <div class="notes_show"></div>
         </div>
