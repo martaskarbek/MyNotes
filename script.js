@@ -65,3 +65,12 @@ function showNotes() {
         };
     };
 }
+
+function createSingleNote(title, content) {
+    const noteTemplate = document.querySelector('#single-note-template');
+    const notesHolder = document.querySelector('.notes_show');
+    const singleNote = document.importNode(noteTemplate.content, true);
+    const noteTitle = document.querySelector('.note-title').innerHTML = title;
+    const noteContent = document.querySelector('.note-content').innerHTML = content;
+    notesHolder.appendChild(singleNote);
+}
