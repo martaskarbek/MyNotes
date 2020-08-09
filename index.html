@@ -13,11 +13,20 @@
 </head>
 <body>
 <template id="notepad-template">
-            <section>
-                <textarea class="note-name" name="name" cols="25" rows="10" placeholder="Type name of your note"></textarea>
-                <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
-                <button class="submit-note" type="submit" onclick="getNewNote()">Add note</button>
-            </section>
+    <section>
+        <textarea class="note-name" name="name" cols="25" rows="10" placeholder="Type name of your note"></textarea>
+        <textarea class="input" name="name" cols="85" rows="25" placeholder="Type your text here"></textarea>
+        <button class="submit-note" type="submit" onclick="getNewNote()">Add note</button>
+    </section>
+</template>
+<template id="single-note-template">
+    <div class="note-holder">
+        <section class="single-note-holder">
+            <p class="note-title"></p>
+            <p class="note-content"></p>
+        </section>
+        <i class="far fa-trash-alt remove"></i>
+    </div>
 </template>
 
     <div class="container">

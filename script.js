@@ -4,6 +4,7 @@ let allNotes = [];
     getDataFromStorage();
     createNewNotepad();
     showNotes();
+    removeNote();
 })();
 
 function getDataFromStorage() {
@@ -52,16 +53,37 @@ function getNewNote() {
 }
 
 function showNotes() {
-    const notesShow =  document.querySelector('.notes_show');
     if (allNotes) {
         for (let i = 0; i < allNotes.length; i++) {
-            const p = document.createElement('p');
-            const value = document.createElement('p');
-            p.innerHTML = (allNotes[i].title).toUpperCase() + ' :'
-            value.innerHTML = allNotes[i].content;
-            value.style.marginLeft = '3.5%';
-            notesShow.appendChild(p);
-            notesShow.appendChild(value);
+            const title = allNotes[i].title;
+            const content = allNotes[i].content;
+            createSingleNote(title, content);
         };
     };
+}
+
+function createSingleNote(title, content) {
+    const noteTemplate = document.querySelector('#single-note-template');
+    const notesHolder = document.querySelector('.notes_show');
+    const singleNote = document.importNode(noteTemplate.content, true);
+    singleNote.querySelector('.note-title').innerHTML = title.toUpperCase();
+    singleNote.querySelector('.note-content').innerHTML = content;
+    notesHolder.appendChild(singleNote);
+}
+
+function removeNote() {
+    let remove_buttons = document.querySelectorAll('.remove');
+    remove_buttons.forEach(buttonn => buttonn.addEventListener('click', function () {
+        this.parentElement.remove();
+        const title = this.parentElement.children.item(0).children.item(0).textContent.toString();
+        const content = this.parentElement.children.item(0).children.item(1).textContent.toString();
+        for (let i = 0; i < allNotes.length; i++) {
+            const titleName = allNotes[i].title;
+            const contentName = allNotes[i].content;
+            if (titleName.toUpperCase() === title && contentName === content ) {
+                allNotes.splice(i, 1);
+            }
+        }
+        setDataToStorage();
+    }));
 }
