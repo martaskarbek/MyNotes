@@ -20,12 +20,20 @@
     </section>
 </template>
 <template id="single-note-template">
-    <div class="note-holder">
-        <section class="single-note-holder">
-            <p class="note-title"></p>
-            <p class="note-content"></p>
-        </section>
-        <i class="far fa-trash-alt remove"></i>
+    <div class="XD">
+        <div class="note-holder">
+            <section class="single-note-holder">
+                <p class="note-title"></p>
+                <p class="note-content"></p>
+            </section>
+            <i class="edit fas fa-pen-fancy"></i>
+            <i class="far fa-trash-alt remove"></i>
+        </div>
+        <div class="update-holder">
+            <textarea class="note-update" name="name" cols="25" rows="5" placeholder="Type name of your note"></textarea>
+            <textarea class="input-update" name="name" cols="85" rows="5" placeholder="Type your text here"></textarea>
+            <button class="update-button" type="button" >Save</button>
+        </div>
     </div>
 </template>
 
@@ -37,7 +45,7 @@
         <div class="notes_container">
             <div class="notes_add" id="parentNode">
             </div>
-            <div class="notes_show"></div>
+            <div class="notes_show" ></div>
         </div>
         <footer>Copyright &#169 Marta Skarbek</footer>
     </div>
