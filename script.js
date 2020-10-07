@@ -12,7 +12,7 @@ function getDataFromStorage() {
     if (localStorage.getItem('notes') == null) {
         localStorage.setItem('notes', JSON.stringify({}))
     }
-    else if (localStorage.getItem('notes').value == null) {
+    else if (localStorage.getItem('notes').length == 0) {
         localStorage.clear();
         localStorage.setItem('notes', JSON.stringify({}));
     }
@@ -78,12 +78,11 @@ function createSingleNote(title, content) {
     singleNote.querySelector('.note-title').innerHTML = title.toUpperCase();
     singleNote.querySelector('.note-content').innerHTML = content;
     const button = singleNote.querySelector(".remove");
-/*    button.addEventListener("click", ()=> removeNote(button))*/
     button.addEventListener("click", function() {
-        let con = confirm("Are you shure You want to remove this note?");
+        let con = confirm("Are You shure You want to remove this note?");
         if (con === true){
         removeNote(button)}
-    else {
+        else {
         alert("Got it!")
         }});
     notesHolder.appendChild(singleNote);
